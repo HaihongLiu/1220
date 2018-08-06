@@ -52,6 +52,7 @@
                   let keylist=['Total'];
                   let allussList={};
                   let totallist=[];
+                  var uss_index,cmdline_index;
                   for(let round in allrounds){
                       let allseperated=allrounds[round].split('\n');
                       var startindex,endindex,totalindex;
@@ -73,11 +74,14 @@
                       totallist.push(total);
                       roundslist.push(`Round${roundnum}  (Total: ${total})`);
                       let resepereted=allseperated.slice(startindex,endindex);
+                      let title_list=notempty(allseperated[0].split(' '));
+                      uss_index=parseInt(title_list.indexOf('Uss'))+1;
+                      cmdline_index=parseInt(title_list.indexOf('cmdline'))+1;
                       resepereted.shift();
                       for(let onekey of resepereted){
                           let list=notempty(onekey.split(' '));
-                          let keyname=list[5];
-                          let uss=parseInt(list[4].substring(0,list[4].length-1));
+                          let keyname=list[cmdline_index];
+                          let uss=parseInt(list[uss_index].substring(0,list[uss_index].length-1));
                           if(keyname.indexOf('google')==-1){
                               if(keylist.indexOf(keyname)==-1){
                                   keylist.push(keyname);
