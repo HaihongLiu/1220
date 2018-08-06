@@ -46,8 +46,8 @@
                   var window_height=$(window).height();
                   $('.linechart').css('width',window_width);
                   $('.linechart').css('height',window_height-$('#convert').height()*1.6);
-                  let allrounds=text.split('total swap)');
-                  allrounds.pop();
+                  let allrounds=text.split('PID');
+                  allrounds.shift();
                   let roundslist=[];
                   let keylist=['Total'];
                   let allussList={};
@@ -73,6 +73,7 @@
                       totallist.push(total);
                       roundslist.push(`Round${roundnum}  (Total: ${total})`);
                       let resepereted=allseperated.slice(startindex,endindex);
+                      resepereted.shift();
                       for(let onekey of resepereted){
                           let list=notempty(onekey.split(' '));
                           let keyname=list[5];
@@ -80,7 +81,7 @@
                           if(keyname.indexOf('google')==-1){
                               if(keylist.indexOf(keyname)==-1){
                                   keylist.push(keyname);
-                                  allussList[keyname]={[roundnum]:uss}
+                                  allussList[keyname]={[roundnum]:uss};
                               }else{
                                   let ussdata=allussList[keyname];
                                   ussdata[roundnum]=uss;
@@ -103,7 +104,6 @@
                       }
                       if(ls.length===0){
                           delete allussList[name];
-                          continue;
                       }else{
                           for(var k=1;k<=roundslist.length;k++){
                               if(nonelist.indexOf(k)==-1){
