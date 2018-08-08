@@ -82,15 +82,20 @@
                           let list=notempty(onekey.split(' '));
                           let keyname=list[cmdline_index];
                           let uss=parseInt(list[uss_index].substring(0,list[uss_index].length-1));
-                          if(keyname.indexOf('google')==-1){
-                              if(keylist.indexOf(keyname)==-1){
-                                  keylist.push(keyname);
-                                  allussList[keyname]={[roundnum]:uss};
-                              }else{
-                                  let ussdata=allussList[keyname];
-                                  ussdata[roundnum]=uss;
-                                  allussList[keyname]=ussdata;
-                              }
+                          console.log(keyname);
+                          if(keyname===undefined){
+
+                          }else{
+                            if(keyname.indexOf('google')==-1){
+                                if(keylist.indexOf(keyname)==-1){
+                                    keylist.push(keyname);
+                                    allussList[keyname]={[roundnum]:uss};
+                                }else{
+                                    let ussdata=allussList[keyname];
+                                    ussdata[roundnum]=uss;
+                                    allussList[keyname]=ussdata;
+                                }
+                            }
                           }
                       }
                   }
